@@ -1,0 +1,107 @@
+.gameBg {
+    padding: 5%;
+    color: white;
+    overflow: hidden;
+    background-color: #1d1d20;
+}
+
+.gameTitle {
+    font-size: 3rem;
+    font-style: italic;
+    padding: 1%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.gameheadBlock {
+    overflow: hidden;
+    display: flex;
+    justify-items: flex-start;
+    align-items: flex-start;
+    padding-bottom: 2.5%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+
+}
+
+.gamePoster {
+    position: sticky;
+    float: left;
+    margin-right: 2%;
+    height: 44rem;
+    width: 28rem;
+}
+
+.gameDesc {
+    flex: 1;
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+
+.infoBlock {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-width: 100%;
+    margin-top: 15px;
+
+}
+
+.gameDesc span {
+    margin-right: 10px;
+    color: #ff6738;
+
+}
+
+.sysTitle {
+    margin-top: 2.5%;
+
+}
+.gameDesc p {
+    padding: 0;
+    margin: 0;
+
+}
+
+.gameDesc ul {
+    margin: 0;
+    padding-top: 1%;
+    padding-left: 15px;
+    list-style-type: none;
+}
+
+.gameDesc li {
+    position: relative;
+    padding-left: 30px;
+    line-height: 1.5;
+}
+
+.gameDesc li::before {
+    content: '\25B6';
+    position: absolute;
+    left: 0;
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #ff6738;
+}
+
+.gameBodyBlock {
+    padding-top: 2.5%;
+    justify-content: center;
+}
+
+.carouselWrapper {
+    height: 300px;
+    width: 300px;
+    background-color: blue;
+}
+
+.slick-dots  {
+    transform: scale(1);
+}
+.slick-dots button {
+    background-color: white !important;
+    color: white;
+    transform: scale(1);
+}

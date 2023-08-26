@@ -1,0 +1,113 @@
+.mainPage {
+    padding: 5%;
+    color: white;
+    background-color: #1d1d20;
+}
+
+.mainBlock {
+    text-align: center;
+}
+
+.titles {
+    font-size: 8rem;
+    padding: 0;
+    margin: 0;
+}
+
+.titlesDescription {
+    opacity: 0.8;
+}
+
+.filtersBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    text-align: center;
+    margin-right: 5%;
+}
+
+.filterTitle {
+    display: flex;
+    align-items: end;
+}
+
+.filters .platformsSect:not(:last-child),
+.filters .genreSect:not(:last-child) {
+    margin-right: 30px;
+}
+
+.platforms {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox {
+    padding: 5px;
+    color: white;
+    font-weight: 500;
+}
+
+.sorters {
+    display: flex;
+    justify-content: left;
+}
+
+.ant-select-arrow {
+    color: #ff6738 !important;
+}
+
+.ant-select-item-option-content,
+.ant-select-item-option-content:hover {
+    color: #333;
+}
+
+.ant-select-focused .ant-select-selection-item,
+.ant-select-selection-placeholder,
+.ant-select-selection-search-input {
+    transition: 0s !important;
+    color: #fff !important;
+    opacity: 1 !important;
+
+}
+
+.filterCleaner {
+    padding-left: 5%;
+    text-align: center;
+}
+
+.cleanerIcon {
+    border-radius: 50%;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.125s;
+}
+
+.cleanerIcon:hover {
+    transform: rotate(-10deg) scale(1.05);
+    transition: 0.125s;
+}
+
+.cleanerIcon:active {
+    color: #ff6738;
+    transform: rotate(30deg) scale(1.2);
+    transition: 0.09s;
+}
+
+.gamesBlock {
+    display: flex;
+    margin-top: 1.5%;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding: 1.6%;
+    height: 100%;
+    border-top: 2px solid rgba(255, 255, 255, 0.05);
+
+}
