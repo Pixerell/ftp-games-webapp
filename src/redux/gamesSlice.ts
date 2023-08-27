@@ -1,16 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
-const gamesSlice = createSlice({
-    name: 'games',
-    initialState: [],
+
+const gameSlice = createSlice({
+    name: 'game',
+    initialState: {
+        loading: false,
+        games: [],
+        error: '',
+    },
     reducers: {
-        // @ts-ignore
-        setGames: (state, action) => {
-            // Handle fetching and setting games from the API
-            return action.payload;
+        fetchGamesRequest: (state) => {
+            state.loading = true;
+        },
+        fetchGamesSuccess: (state, action) => {
+            state.loading = false;
+            state.games = action.payload;
+            state.error = '';
+        },
+        fetchGamesFailure: (state, action) => {
+            state.loading = false;
+            state.games = [];
+            state.error = action.payload;
         },
     },
 });
 
-export const { setGames } = gamesSlice.actions;
-export default gamesSlice.reducer;
+
+
+export default gameSlice.reducer;

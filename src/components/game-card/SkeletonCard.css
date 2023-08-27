@@ -1,0 +1,17 @@
+.SkeletonCard {
+    background-color: #3a3a3a;
+    height: 100%;
+    overflow: hidden !important;
+}
+
+.SkeletonImg {
+    height: 82% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.SkeletonBody {
+    width: 100%;
+    margin-top: -10%;
+}

@@ -23,7 +23,6 @@
 @media (max-width: 2000px) {
     .FloatingButton {
         transform: scale(1);
-        right: 10% !important;
     }
 }
 

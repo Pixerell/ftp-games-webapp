@@ -113,8 +113,18 @@
 
 .aligned-col {
     display: flex;
-    align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.loadingBlock {
+    display: flex;
+    flex-direction: row;
+}
+
+.spinner {
+    align-self: center;
+    padding: 1%;
 }
 
 @media (min-width: 2000px) {
@@ -210,4 +220,10 @@
     .mainPage {
         word-break: break-word;
     }
+}
+
+.temp {
+    background-color: blue;
+    height: 2000px;
+    width: 1000px;
 }
