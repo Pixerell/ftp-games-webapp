@@ -1,8 +1,9 @@
 import './MainPage.css'
-import {Checkbox, Col, Row, Select, Button, Space, FloatButton} from "antd";
-import { UpOutlined, RedoOutlined } from '@ant-design/icons';
+import {Checkbox, Col, Row, Select, Button} from "antd";
+import {RedoOutlined } from '@ant-design/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import GameCard from "../../components/game-card/GameCard";
+import Floater from "../../components/floating-button/FloatingButton";
 
 interface Game {
     id: number;
@@ -66,12 +67,20 @@ export default function MainPage() {
                     <div className="sorters">
                         <span>
                             <p className="filterTitle"> <strong>Sorters</strong></p>
-                            <Space size={12} className="buttonContainer">
-                                <Button type="primary">Relevance</Button>
-                                <Button>Release Date</Button>
-                                <Button>Popularity</Button>
-                                <Button>Alphabetically</Button>
-                            </Space>
+                            <Row gutter={[12, 12]} className="buttonContainer">
+                                <Col xs={24} sm={12} md={8} lg={6}  className="aligned-col">
+                                    <Button type="primary">Relevance</Button>
+                                </Col>
+                                <Col xs={24} sm={12} md={8} lg={6}  className="aligned-col">
+                                    <Button>Release Date</Button>
+                                </Col>
+                                <Col xs={24} sm={12} md={8} lg={6}  className="aligned-col">
+                                    <Button>Popularity</Button>
+                                </Col>
+                                <Col xs={24} sm={12} md={8} lg={6}  className="aligned-col">
+                                    <Button>Alphabetically</Button>
+                                </Col>
+                            </Row>
                         </span>
                     </div>
                     <div className="filterCleaner">
@@ -90,12 +99,7 @@ export default function MainPage() {
                     ))}
                 </Row>
             </div>
-            <FloatButton
-                shape="circle"
-                type="primary"
-                style={{ right: 94 }}
-                icon={<UpOutlined />}
-            />
+            <Floater/>
         </div>
     )
 }

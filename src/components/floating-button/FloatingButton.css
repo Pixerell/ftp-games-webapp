@@ -1,0 +1,34 @@
+.FloatingButton {
+    transform: scale(1.25);
+    transition: 0.2s;
+}
+
+.FloatingButton:hover {
+    transform: scale(1.05);
+    transition: 0.125s;
+}
+
+.FloatingButton:active {
+    transform: scale(1.1) translateY(-3px);
+    transition: 0.09s;
+}
+
+
+@media (min-width: 2000px) {
+    .FloatingButton {
+        transform: scale(1.5);
+    }
+}
+
+@media (max-width: 2000px) {
+    .FloatingButton {
+        transform: scale(1);
+        right: 10% !important;
+    }
+}
+
+@media (max-height: 100px) {
+    .FloatingButton {
+        top: 35% !important;
+    }
+}

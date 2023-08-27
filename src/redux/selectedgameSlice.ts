@@ -4,6 +4,7 @@ const selectedGameSlice = createSlice({
     name: 'selectedGame',
     initialState: null,
     reducers: {
+        // @ts-ignore
         setSelectedGame: (state, action) => {
             // Handle fetching and setting selected game details
             return action.payload;

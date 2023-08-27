@@ -4,6 +4,7 @@ const gamesSlice = createSlice({
     name: 'games',
     initialState: [],
     reducers: {
+        // @ts-ignore
         setGames: (state, action) => {
             // Handle fetching and setting games from the API
             return action.payload;
