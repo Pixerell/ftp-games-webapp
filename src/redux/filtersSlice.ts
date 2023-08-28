@@ -1,51 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export const DEFAULT_GENRE = 'All Genres';
+export const DEFAULT_PLATFORM = 'All Platforms';
+export const DEFAULT_SORT = 'relevance';
+
 const filtersSlice = createSlice({
     name: 'filters',
     initialState: {
-        genre: 'All Genres'
+        genre: DEFAULT_GENRE,
+        platform: DEFAULT_PLATFORM,
+        sort: DEFAULT_SORT
     },
     reducers: {
         setGenreFilter: (state, action) => {
             state.genre = action.payload;
-            console.log("genre set - " + state.genre)
-        }
-    }
-});
-
-const platformsSlice = createSlice({
-    name: 'platforms',
-    initialState: {
-        platform: 'All Platforms'
-    },
-    reducers: {
+        },
         setPlatformFilter: (state, action) => {
             state.platform = action.payload;
-            console.log("platform set - " + state.platform)
-        }
-    }
-});
-
-const sortersSlice = createSlice({
-    name: 'sorters',
-    initialState: {
-        sort: 'Relevance'
-    },
-    reducers: {
+        },
         setSortOption: (state, action) => {
             state.sort = action.payload;
-            console.log("Sort - " + state.sort)
+        },
+        resetFilters: (state) => {
+            state.genre = DEFAULT_GENRE;
+            state.platform = DEFAULT_PLATFORM;
+            state.sort = DEFAULT_SORT;
         }
     }
 });
 
+export const {
+    setGenreFilter,
+    setPlatformFilter,
+    setSortOption,
+    resetFilters
+} = filtersSlice.actions;
 
-
-export const { setGenreFilter } = filtersSlice.actions;
-export const { setPlatformFilter } = platformsSlice.actions;
-export const { setSortOption } = sortersSlice.actions;
-
-export const filtersReducer = filtersSlice.reducer;
-export const platformsReducer = platformsSlice.reducer;
-export const sortersReducer = sortersSlice.reducer;
+export default filtersSlice.reducer
 

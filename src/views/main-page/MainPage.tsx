@@ -7,49 +7,48 @@ import Floater from "../../components/floating-button/FloatingButton";
 import {useFetchGamesQuery} from "../../redux/api";
 import RootState, {Game, genres} from "../../components/Interfaces";
 import SkeletonCard from "../../components/game-card/SkeletonCard";
-import {useDispatch, useSelector} from "react-redux";
-import {setGenreFilter, setPlatformFilter, setSortOption} from "../../redux/filtersSlice";
-import {useState} from "react";
+import {useFilterLogic} from "./useFilterLogic";
+import {DEFAULT_GENRE, DEFAULT_SORT} from "../../redux/filtersSlice";
+import {useSelector} from "react-redux";
+import InfiniteObserver from "./InfiniteObserver";
+import useInterval from "../../components/useErrorInterval";
+
 
 export default function MainPage() {
 
-    const { Option } = Select;
+    const {
+        genreFilter,
+        platformFilter,
+        activeSort,
+        selectedPlatform,
+        applySortOption,
+        applyGenreFilter,
+        applyPlatformFilter,
+        clearAllFilters
+    } = useFilterLogic();
 
-    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-
-    const genreFilter = useSelector((state: RootState) => state.filters.genre);
-    const platformFilter = useSelector((state: RootState) => state.platforms.platform);
-    const activeSort = useSelector((state: RootState) => state.sorters.sort);
-
-    const { data: games, error, isLoading } = useFetchGamesQuery({
+    const { data: games, isLoading, error, refetch  } = useFetchGamesQuery({
         category: genreFilter,
         platform: platformFilter,
+        sort: activeSort
     });
 
-    const [selectedPlatform, setSelectedPlatform] = useState('all'); // Default value
-
-    const handlePlatformChange = (platform:string) => {
-        if (selectedPlatform === platform) {
-            setSelectedPlatform('all'); // Disable the selected platform
-            dispatch(setPlatformFilter('all')); // Dispatch action with default value
-        } else {
-            setSelectedPlatform(platform); // Enable the selected platform
-            dispatch(setPlatformFilter(platform)); // Dispatch action with selected platform
+    useInterval(() => {
+        if (error) {
+            console.log("Something went wrong with an API call!")
+            refetch();
         }
-    };
+    });
 
-    const handleClearFilters = () => {
-        setSelectedPlatform('all'); // Disable the selected platform
+    const { Option } = Select;
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-        dispatch(setGenreFilter('all')); // Reset genre filter
-        dispatch(setPlatformFilter('all')); // Reset platform filter
-        dispatch(setSortOption('relevance')); // Reset sort option
-    };
+    const currentPage = useSelector((state: RootState) => state.pagination.currentPage);
+    let gamesPerPage = useSelector((state: RootState) => state.pagination.gamesPerPage);
 
-
-
-    const dispatch = useDispatch();
-
+    const indexOfLastGame = currentPage * gamesPerPage;
+    const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+    const currentGames = games?.slice(indexOfFirstGame, indexOfLastGame);
 
     return (
             <div className="mainPage">
@@ -63,19 +62,19 @@ export default function MainPage() {
                         <p className="filterTitle"><strong>Platform</strong></p>
                         <div className="platforms">
                             <Checkbox checked={selectedPlatform === 'pc'}
-                                      onChange={() => handlePlatformChange('pc')}
+                                      onChange={() => applyPlatformFilter('pc')}
                                       className="checkbox">PC</Checkbox>
                             <Checkbox checked={selectedPlatform === 'browser'}
-                                      onChange={() => handlePlatformChange('browser')}
+                                      onChange={() => applyPlatformFilter('browser')}
                                       className="checkbox">Browser</Checkbox>
                         </div>
                     </span>
                         <span className="genreSect">
                         <p className="filterTitle"> <strong>Genre</strong></p>
                         <div className="genres">
-                            <Select onSelect={(genre) => dispatch(setGenreFilter(genre))}
-                                    defaultValue="All Genres" style={{width: 150}}>
-                                <Option value="All Genres">All Genres</Option>
+                            <Select onSelect={(genre) => applyGenreFilter(genre)}
+                                    defaultValue={DEFAULT_GENRE} style={{width: 150}}>
+                                <Option value={DEFAULT_GENRE}>All Genres</Option>
                                 {genres.map((genre) => (
                                     <Option key={genre} value={genre}>
                                         {genre}
@@ -91,8 +90,8 @@ export default function MainPage() {
                             <Row gutter={[12, 12]} className="buttonContainer">
                                 <Col xs={24} sm={12} md={8} lg={8} className="aligned-col">
                                     <Button
-                                        type={activeSort === 'relevance' ? 'primary' : 'default'}
-                                        onClick={() => dispatch(setSortOption('relevance'))}
+                                        type={activeSort === DEFAULT_SORT ? 'primary' : 'default'}
+                                        onClick={() => applySortOption(DEFAULT_SORT)}
                                         className="aligned-col"
                                     >
                                         Relevance
@@ -101,7 +100,7 @@ export default function MainPage() {
                                 <Col xs={24} sm={12} md={8} lg={8} className="aligned-col">
                                     <Button
                                         type={activeSort === 'release-date' ? 'primary' : 'default'}
-                                        onClick={() => dispatch(setSortOption('release-date'))}
+                                        onClick={() => applySortOption('release-date')}
                                         className="aligned-col"
                                     >
                                         Release Date
@@ -110,7 +109,7 @@ export default function MainPage() {
                                 <Col xs={24} sm={12} md={8} lg={8} className="aligned-col">
                                     <Button
                                         type={activeSort === 'alphabetical' ? 'primary' : 'default'}
-                                        onClick={() => dispatch(setSortOption('alphabetical'))}
+                                        onClick={() => applySortOption('alphabetical')}
                                         className="aligned-col"
                                     >
                                         Alphabetically
@@ -122,16 +121,19 @@ export default function MainPage() {
                     </div>
                     <div className="filterCleaner">
                         <p className="filterTitle"><strong>Clear Filters</strong></p>
-                        <RedoOutlined onClick={handleClearFilters} className="cleanerIcon"/>
+                        <RedoOutlined onClick={clearAllFilters} className="cleanerIcon"/>
                     </div>
                 </div>
                 <div className="gamesBlock">
                     <Row gutter={[30, 30]}>
 
                         {error ? (
-                            <p className="titles">Error fetching games ;(</p>
+                            <div>
+                                <p className="titles">Error fetching games ;(</p>
+                                <p className="titles">Fetching 3 times in 15 seconds...</p>
+                            </div>
                         ) : (
-                            games?.map((game: Game) => (
+                            currentGames?.map((game: Game) => (
                                     <Col key={game.id} xs={24} sm={12} md={8} lg={6}>
                                         <RouterLink to={`/game/${game.id}`}>
                                             <GameCard game={game} />
@@ -144,6 +146,7 @@ export default function MainPage() {
                                     <SkeletonCard cards={1}/>
                                 </Col>
                         )}
+                        {!isLoading && <InfiniteObserver />}
                     </Row>
                 </div>
                 {isLoading && (

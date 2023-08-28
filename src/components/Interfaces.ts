@@ -1,14 +1,15 @@
-import {filtersReducer, platformsReducer, sortersReducer} from '../redux/filtersSlice';
+import filtersReducer from '../redux/filtersSlice';
+import paginationReducer from "../redux/paginationSlice";
 
 type RootState = {
     filters: ReturnType<typeof filtersReducer>;
-    platforms: ReturnType<typeof platformsReducer>;
-    sorters: ReturnType<typeof sortersReducer>
+    pagination: ReturnType<typeof paginationReducer>,
     // ...other reducers
 };
 
 export default RootState;
 
+export type ActionWithPayload = (payload: any) => { type: string; payload: any };
 
 export interface Game {
     id: number;

@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {DEFAULT_GENRE, DEFAULT_PLATFORM, DEFAULT_SORT} from "./filtersSlice";
 
 const API_HOST = 'free-to-play-games-database.p.rapidapi.com';
 const API_KEY = '43207bd04amsh63cfcd726b62687p19d5dcjsn234fc1d2f9d2';
@@ -15,17 +16,27 @@ export const api = createApi({
     endpoints: (builder) => ({
         fetchGames: builder.query({
             query: (filters) => {
-                const { category, platform } = filters;
-                console.log(category, platform)
-                if (category === 'All Genres' && platform === 'All Platforms') {
+                const { category, platform, sort } = filters;
+
+                if (category === DEFAULT_GENRE && platform === DEFAULT_PLATFORM && sort === DEFAULT_SORT) {
                     return { url: '/games' };
-                } else if (category === 'All Genres') {
-                    return { url: '/games', params: { platform } };
-                } else if (platform === 'All Platforms') {
-                    return { url: '/games', params: { category } };
                 }
-                console.log("got to the end")
-                return { url: '/games', params: { category, platform } };
+
+                const params: { [key: string]: string } = {};
+
+                if (sort !== DEFAULT_SORT) {
+                    params['sort-by'] = sort;
+                }
+
+                if (category !== DEFAULT_GENRE) {
+                    params['category'] = category;
+                }
+
+                if (platform !== DEFAULT_PLATFORM) {
+                    params['platform'] = platform;
+                }
+
+                return { url: '/games', params };
             },
         }),
     }),

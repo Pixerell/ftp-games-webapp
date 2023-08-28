@@ -1,13 +1,14 @@
 import {configureStore } from '@reduxjs/toolkit';
 import  {api} from "./api";
-import {filtersReducer, platformsReducer, sortersReducer} from './filtersSlice';
+import filtersReducer from './filtersSlice';
+import paginationReducer from './paginationSlice';
 
 const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
         filters: filtersReducer,
-        platforms: platformsReducer,
-        sorters: sortersReducer,
+        pagination: paginationReducer,
+
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
     devTools: process.env.NODE_ENV !== "production",
