@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 export const DEFAULT_GENRE = 'All Genres';
 export const DEFAULT_PLATFORM = 'All Platforms';

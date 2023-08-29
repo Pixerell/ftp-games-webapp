@@ -1,10 +1,10 @@
 .SkeletonCard {
-    background-color: #3a3a3a;
+    overflow: hidden !important;
     height: 10%;
     width: 23%;
+    background-color: #3a3a3a;
     margin-left: 1%;
     margin-right: 1%;
-    overflow: hidden !important;
     padding-bottom: -10%;
 }
 

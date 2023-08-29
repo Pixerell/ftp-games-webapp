@@ -1,7 +1,7 @@
 import './MainPage.css'
 import {Checkbox, Col, Row, Select, Button} from "antd";
-import {RedoOutlined } from '@ant-design/icons';
-import { Link as RouterLink } from 'react-router-dom';
+import {RedoOutlined} from '@ant-design/icons';
+import {Link as RouterLink} from 'react-router-dom';
 import GameCard from "../../components/game-card/GameCard";
 import Floater from "../../components/floating-button/FloatingButton";
 import {useFetchGamesQuery} from "../../redux/api";
@@ -19,7 +19,7 @@ import ErrorBlock from "../../components/error-block/ErrorBlock";
 
 export default function MainPage() {
 
-    const { Option } = Select;
+    const {Option} = Select;
 
     const {
         genreFilter,
@@ -32,11 +32,18 @@ export default function MainPage() {
         clearAllFilters
     } = useFilterLogic();
 
-    const { data: games, isLoading, error,  refetch  } = useFetchGamesQuery({
+    const {data: games, isLoading, error, refetch} = useFetchGamesQuery({
         category: genreFilter,
         platform: platformFilter,
         sort: activeSort
     }, {refetchOnMountOrArgChange: false});
+
+    useInterval(() => {
+        if (error) {
+            console.log("Something went wrong with a Main Page API call!")
+            refetch();
+        }
+    });
 
     const currentPage = useSelector((state: RootState) => state.pagination.currentPage);
     const gamesPerPage = useSelector((state: RootState) => state.pagination.gamesPerPage);
@@ -44,24 +51,14 @@ export default function MainPage() {
     const indexOfFirstGame = indexOfLastGame - gamesPerPage;
     const currentGames = games?.slice(indexOfFirstGame, indexOfLastGame);
 
-
-    useInterval(() => {
-        if (error) {
-            console.log("Something went wrong with a Main Page API call!")
-            console.log(refetch)
-            refetch();
-        }
-    });
-
-
     return (
-            <div className="mainPage">
-                <div className="mainBlock">
-                    <h1 className="titles">FtPG UI</h1>
-                    <div className="titlesDescription">This is a UI for Free-To-Play Games.com</div>
-                </div>
-                <div className="filtersBlock">
-                    <div className="filters">
+        <div className="mainPage">
+            <div className="mainBlock">
+                <h1 className="titles">FTG UI</h1>
+                <div className="titlesDescription">This is a UI for Free-To-Play Games.com</div>
+            </div>
+            <div className="filtersBlock">
+                <div className="filters">
                     <span className="platformsSect">
                         <p className="filterTitle"><strong>Platform</strong></p>
                         <div className="platforms">
@@ -73,7 +70,7 @@ export default function MainPage() {
                                       className="checkbox">Browser</Checkbox>
                         </div>
                     </span>
-                        <span className="genreSect">
+                    <span className="genreSect">
                         <p className="filterTitle"> <strong>Genre</strong></p>
                         <div className="genres">
                             <Select onSelect={(genre) => applyGenreFilter(genre)}
@@ -87,8 +84,8 @@ export default function MainPage() {
                             </Select>
                         </div>
                     </span>
-                    </div>
-                    <div className="sorters">
+                </div>
+                <div className="sorters">
                     <span>
                         <p className="filterTitle"> <strong>Sorters</strong></p>
                             <Row gutter={[12, 12]} className="buttonContainer">
@@ -122,36 +119,36 @@ export default function MainPage() {
                             </Row>
 
                     </span>
-                    </div>
-                    <div className="filterCleaner">
-                        <p className="filterTitle"><strong>Clear Filters</strong></p>
-                        <RedoOutlined onClick={clearAllFilters} className="cleanerIcon"/>
-                    </div>
                 </div>
-                <div className="gamesBlock">
-
-                    <Row className="mainRow" gutter={[30, 30]}>
-                        {isLoading && (
-                            <LoadingBlock/>
-                        )}
-                        {isLoading && (
-                            <SkeletonCard cards={8}/>
-                        )}
-                        {error ? (
-                            <ErrorBlock error={error}/>
-                        ) : (
-                            currentGames?.map((game: IGame) => (
-                                    <Col key={game.id} xs={24} sm={12} md={8} lg={6}>
-
-                                        <RouterLink to={`/game/${game.id}`}>
-                                            <GameCard game={game} />
-                                        </RouterLink>
-                                    </Col>
-                            ))
-                        )}
-                        {!isLoading && <InfiniteObserver />}
-                    </Row>
+                <div className="filterCleaner">
+                    <p className="filterTitle"><strong>Clear Filters</strong></p>
+                    <RedoOutlined onClick={clearAllFilters} className="cleanerIcon"/>
                 </div>
+            </div>
+            <div className="gamesBlock">
+
+                <Row className="mainRow" gutter={[30, 30]}>
+                    {isLoading && (
+                        <LoadingBlock/>
+                    )}
+                    {isLoading && (
+                        <SkeletonCard cards={8}/>
+                    )}
+                    {error ? (
+                        <ErrorBlock error={error}/>
+                    ) : (
+                        currentGames?.map((game: IGame) => (
+                            <Col key={game.id} xs={24} sm={12} md={8} lg={6}>
+
+                                <RouterLink to={`/game/${game.id}`}>
+                                    <GameCard game={game}/>
+                                </RouterLink>
+                            </Col>
+                        ))
+                    )}
+                    {!isLoading && <InfiniteObserver/>}
+                </Row>
+            </div>
             <Floater/>
         </div>
     )

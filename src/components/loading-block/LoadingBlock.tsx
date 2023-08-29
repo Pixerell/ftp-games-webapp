@@ -8,7 +8,6 @@ const LoadingBlock = () => (
     <div className="loadingBlock">
         <Alert message="Loading..." type="info" showIcon></Alert>
         <Spin className="spinner" indicator={antIcon} />
-
     </div>
 );
 

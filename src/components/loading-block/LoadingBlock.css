@@ -1,24 +1,24 @@
 .loadingBlock {
     display: flex;
-    width: 100%;
-    height: 160px;
     flex-direction: row;
     align-self: center;
-
+    width: 100%;
+    height: 160px;
 }
 
 .spinner {
     position: absolute;
-    left: 80%;
-    transform: scale(1.5);
     align-self: center;
+    left: 80%;
     padding: 1%;
+    transform: scale(1.5);
 }
 
 @media (max-width: 600px) {
     .loadingBlock {
         height: 80px;
     }
+
     .spinner {
         transform: scale(1);
     }
@@ -28,6 +28,7 @@
     .loadingBlock {
         height: 80px;
     }
+
     .spinner {
         display: none;
     }

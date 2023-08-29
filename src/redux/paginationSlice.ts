@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
-export const DEFAULT_GAMES_NUMBER = 40;
+export const DEFAULT_GAMES_NUMBER = 20;
 
 const paginationSlice = createSlice({
     name: 'pagination',
@@ -15,5 +15,5 @@ const paginationSlice = createSlice({
     },
 });
 
-export const {setGamesPerPage } = paginationSlice.actions;
+export const {setGamesPerPage} = paginationSlice.actions;
 export default paginationSlice.reducer;

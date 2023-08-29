@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {ActionWithPayload} from './Interfaces';
 import {RootState} from '../redux/store';
 import {
@@ -45,3 +45,4 @@ export const useFilterLogic = () => {
         },
     };
 };
+

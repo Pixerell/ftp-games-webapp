@@ -1,6 +1,6 @@
 import {IGameDescriptionProps} from "../../helpers/Interfaces";
 
-const GameDescription: React.FC<IGameDescriptionProps> = ({ gameDesc }) => (
+const GameDescription: React.FC<IGameDescriptionProps> = ({gameDesc}) => (
     <div>
         <div className="infoBlock">
             <span className="coloredText">Release - </span>

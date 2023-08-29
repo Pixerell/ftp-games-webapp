@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'
 import {Provider} from 'react-redux'
-import { ConfigProvider } from 'antd';
-import { customTheme } from './themeConfig';
+import {ConfigProvider} from 'antd';
+import {customTheme} from './themeConfig';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 
 root.render(

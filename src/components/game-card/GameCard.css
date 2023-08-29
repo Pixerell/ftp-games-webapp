@@ -1,14 +1,14 @@
 .gameCard {
     overflow: hidden;
-    border: transparent;
     font-size: 1rem;
+    border: transparent;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease-in-out;
 }
 
 .gameCard:hover {
-    transform: rotate(0.2deg) scale(1.015);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transform: rotate(0.2deg) scale(1.015);
 }
 
 .underImgCard {
@@ -33,11 +33,14 @@
 }
 
 .metaCard {
+    display: flex;
     width: 50%;
 }
 
 .rightMeta {
     align-items: center;
     text-align: right;
+    font-size: 1rem;
+    margin-left: 2% !important;
     opacity: 0.5;
 }

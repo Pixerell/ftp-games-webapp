@@ -1,7 +1,7 @@
 import {IGameDescriptionProps} from "../../helpers/Interfaces";
 import "./GamePage.css"
 
-const GameDescriptionAdditional: React.FC<IGameDescriptionProps> = ({ gameDesc }) => (
+const GameDescriptionAdditional: React.FC<IGameDescriptionProps> = ({gameDesc}) => (
 
     <div className="AdditionalDesc">
         <div className="infoBlock listFlex">
@@ -19,7 +19,7 @@ const GameDescriptionAdditional: React.FC<IGameDescriptionProps> = ({ gameDesc }
             )}
         </div>
         <div className="infoBlock">
-            <section> <span className="coloredText">Description</span>{gameDesc.description}</section>
+            <section><span className="coloredText">Description</span>{gameDesc.description}</section>
         </div>
     </div>
 );

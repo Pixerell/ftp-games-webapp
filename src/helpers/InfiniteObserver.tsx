@@ -1,5 +1,5 @@
 import {useEffect, useRef} from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import {DEFAULT_GAMES_NUMBER, setGamesPerPage} from "../redux/paginationSlice";
 

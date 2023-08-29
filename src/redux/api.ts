@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {DEFAULT_GENRE, DEFAULT_PLATFORM, DEFAULT_SORT} from "./filtersSlice";
 
 const API_HOST = 'free-to-play-games-database.p.rapidapi.com';
@@ -16,10 +16,10 @@ export const api = createApi({
     endpoints: (builder) => ({
         fetchGames: builder.query({
             query: (filters) => {
-                const { category, platform, sort } = filters;
+                const {category, platform, sort} = filters;
 
                 if (category === DEFAULT_GENRE && platform === DEFAULT_PLATFORM && sort === DEFAULT_SORT) {
-                    return { url: '/games' };
+                    return {url: '/games'};
                 }
 
                 const params: { [key: string]: string } = {};
@@ -36,17 +36,17 @@ export const api = createApi({
                     params['platform'] = platform;
                 }
 
-                return { url: '/games', params };
+                return {url: '/games', params};
             },
         }),
 
         fetchSpecificGame: builder.query({
-            query: ({ gameId }) => {
-                return { url: `/game`, params: { id: gameId } };
+            query: ({gameId}) => {
+                return {url: `/game`, params: {id: gameId}};
             }
         })
 
     }),
 });
 
-export const { useFetchGamesQuery } = api;
+export const {useFetchGamesQuery} = api;

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 
 function useInterval(callback: () => void) {
     const delay = 1500; // 15 seconds
@@ -17,6 +17,7 @@ function useInterval(callback: () => void) {
                 iterationCount.current += 1;
             }
         }
+
         if (delay !== null) {
             const id = setInterval(tick, delay);
             return () => {

@@ -1,22 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { api } from "../redux/api";
-import { RootState } from "../redux/store";
-import { IGameDetails } from "./Interfaces";
-import { cacheGame } from "../redux/savedgamesSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {api} from "../redux/api";
+import {RootState} from "../redux/store";
+import {IGameDetails} from "./Interfaces";
+import {cacheGame} from "../redux/savedgamesSlice";
 import useInterval from "./useErrorInterval";
 
 export function useGamePageFetcher() {
 
-    const { id } = useParams();
+    const {id} = useParams();
     const gameDataFromRedux = useSelector((state: RootState) => state.savedGames[Number(id)]) as IGameDetails | undefined;
     const shouldSkipQuery = !!gameDataFromRedux;
     let gameData = gameDataFromRedux;
 
-    const { data: gameDataQuery, isLoading, error, refetch } = api.endpoints.fetchSpecificGame.useQuery(
-        { gameId: id! },
-        { skip: shouldSkipQuery, refetchOnMountOrArgChange: false },
+    const {data: gameDataQuery, isLoading, error, refetch} = api.endpoints.fetchSpecificGame.useQuery(
+        {gameId: id!},
+        {skip: shouldSkipQuery, refetchOnMountOrArgChange: false},
     );
 
     const dispatch = useDispatch();
@@ -25,10 +25,10 @@ export function useGamePageFetcher() {
     useEffect(() => {
         if (!shouldSkipQuery && gameDataQuery) {
             const currentDate = new Date();
-            const modifiedGameData = { ...gameDataQuery, dateOfGettingCached: currentDate.toISOString() };
+            const modifiedGameData = {...gameDataQuery, dateOfGettingCached: currentDate.toISOString()};
             gameData = gameDataQuery;
             console.log("Caching game  - " + gameDataQuery.id);
-            dispatch(cacheGame({ gameData: modifiedGameData }));
+            dispatch(cacheGame({gameData: modifiedGameData}));
         }
     }, [shouldSkipQuery, gameDataQuery, dispatch]);
 

@@ -1,8 +1,8 @@
 .gameBg {
-    padding: 5%;
-    color: white;
     overflow: hidden;
+    color: white;
     background-color: #1d1d20;
+    padding: 5%;
 }
 
 .gameTitle {
@@ -18,26 +18,26 @@
 
 
 .gameheadBlock {
-    overflow: hidden;
     display: flex;
     justify-items: flex-start;
     align-items: flex-start;
+    overflow: hidden;
 }
 
 .gamePoster {
     position: sticky;
     float: left;
-    margin-right: 2%;
     height: 20rem;
     width: 24rem;
+    margin-right: 2%;
     transition: 0.2s ease-in-out;
 }
 
 .gameDesc {
     flex: 1;
     display: flex;
-    width: auto;
     flex-direction: column;
+    width: auto;
     font-size: 1.5rem;
 }
 
@@ -58,8 +58,8 @@
 .coloredText {
     display: flex;
     align-items: center;
-    margin-right: 10px;
     color: #ff6738;
+    margin-right: 10px;
 
 }
 
@@ -88,27 +88,28 @@
 }
 
 .AdditionalDesc ul {
+    list-style-type: none;
     margin: 0;
     padding-top: 1%;
     padding-left: 15px;
     padding-bottom: 1.2%;
-    list-style-type: none;
 
 }
 
 .AdditionalDesc li {
     position: relative;
-    padding-left: 30px;
     line-height: 2;
+    padding-left: 30px;
 }
 
 .AdditionalDesc li::before {
-    content: '\25B6';
     position: absolute;
     left: 0;
-    margin-top: 8px;
     font-size: 1rem;
     color: #ff6738;
+    margin-top: 8px;
+    content: '\25B6';
+
 }
 
 .listFlex {
@@ -138,14 +139,14 @@
 }
 
 .screenCarausel Img {
+    cursor: pointer;
     justify-self: center;
     align-self: center;
-    cursor: pointer;
     padding: 0 0 5% 0;
     object-fit: contain;
 }
 
-.slick-dots  {
+.slick-dots {
 
     transform: scale(2);
 
@@ -159,9 +160,9 @@
 @media (max-width: 1100px) {
 
     .gameBg {
+        overflow: auto;
         word-wrap: normal;
         word-break: break-word;
-        overflow: auto;
     }
 
     .coloredText {
@@ -182,6 +183,4 @@
     .mobileDesc {
         display: block;
     }
-
-
 }
