@@ -31,3 +31,9 @@
         top: 35% !important;
     }
 }
+
+@media (max-width: 160px) {
+    .FloatingButton {
+        right: 35% !important;
+    }
+}

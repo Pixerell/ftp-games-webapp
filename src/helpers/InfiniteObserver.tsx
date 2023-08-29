@@ -1,7 +1,7 @@
 import {useEffect, useRef} from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import RootState from '../../components/Interfaces';
-import {DEFAULT_GAMES_NUMBER, setGamesPerPage} from "../../redux/paginationSlice";
+import {RootState} from '../redux/store';
+import {DEFAULT_GAMES_NUMBER, setGamesPerPage} from "../redux/paginationSlice";
 
 const InfiniteObserver = () => {
     const dispatch = useDispatch();

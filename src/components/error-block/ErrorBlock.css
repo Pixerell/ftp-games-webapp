@@ -1,0 +1,12 @@
+.errorBlock {
+    animation: slideInFromLeft 1.2s forwards;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}

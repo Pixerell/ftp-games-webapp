@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 function useInterval(callback: () => void) {
-    const delay = 15000; // 15 seconds
+    const delay = 1500; // 15 seconds
     const savedCallback = useRef<() => void>();
     const iterationCount = useRef(0);
     const maxIterations = 3;

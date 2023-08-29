@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 function FloaterLogic() {
     const location = useLocation();
     const navigate = useNavigate();
-
     const handleClick = () => {
         if (location.pathname === '/') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -11,7 +10,6 @@ function FloaterLogic() {
             navigate('/');
         }
     };
-
     return {
         handleClick,
     };

@@ -1,7 +1,6 @@
 import './App.css';
 import bg from "./bg.jpg"
 import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
-
 import MainPage from "./views/main-page/MainPage";
 import GamePage from "./views/game-page/GamePage";
 

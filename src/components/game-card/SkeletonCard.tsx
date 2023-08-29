@@ -1,9 +1,9 @@
 import React from 'react';
 import { Skeleton } from 'antd';
 import './SkeletonCard.css'
-import { SkeletonCardProps } from "../Interfaces"
+import { ISkeletonCardProps } from "../../helpers/Interfaces"
 
-const SkeletonCard: React.FC<SkeletonCardProps> = ({ cards }) => {
+const SkeletonCard: React.FC<ISkeletonCardProps> = ({ cards }) => {
     const skeletonCards = Array(cards)
         .fill(0)
         .map((_item, index) => (

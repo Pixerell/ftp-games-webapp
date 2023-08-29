@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card } from 'antd';
 import './GameCard.css'
-import {GameCardProps} from "../Interfaces";
+import {IGameCardProps} from "../../helpers/Interfaces";
 
 const { Meta } = Card;
 
-const GameCard: React.FC<GameCardProps> = (game) => {
+const GameCard: React.FC<IGameCardProps> = (game) => {
     return (
         <Card className="gameCard"
             hoverable

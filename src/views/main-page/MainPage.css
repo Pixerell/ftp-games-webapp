@@ -117,14 +117,8 @@
     width: 100%;
 }
 
-.loadingBlock {
-    display: flex;
-    flex-direction: row;
-}
-
-.spinner {
-    align-self: center;
-    padding: 1%;
+.mainRow {
+    width: 100%;
 }
 
 @media (min-width: 2000px) {

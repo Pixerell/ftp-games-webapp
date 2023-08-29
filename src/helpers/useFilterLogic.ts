@@ -1,14 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import RootState, {ActionWithPayload} from '../../components/Interfaces';
+import {ActionWithPayload} from './Interfaces';
+import {RootState} from '../redux/store';
 import {
     setGenreFilter,
     setPlatformFilter,
     setSortOption,
     resetFilters
-} from '../../redux/filtersSlice';
-import {DEFAULT_PLATFORM} from "../../redux/filtersSlice";
+} from '../redux/filtersSlice';
+import {DEFAULT_PLATFORM} from "../redux/filtersSlice";
 import {useState} from "react";
-import {DEFAULT_GAMES_NUMBER, setGamesPerPage} from "../../redux/paginationSlice";
+import {DEFAULT_GAMES_NUMBER, setGamesPerPage} from "../redux/paginationSlice";
 
 export const useFilterLogic = () => {
     const dispatch = useDispatch();

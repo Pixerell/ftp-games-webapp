@@ -39,6 +39,13 @@ export const api = createApi({
                 return { url: '/games', params };
             },
         }),
+
+        fetchSpecificGame: builder.query({
+            query: ({ gameId }) => {
+                return { url: `/game`, params: { id: gameId } };
+            }
+        })
+
     }),
 });
 

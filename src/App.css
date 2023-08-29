@@ -13,3 +13,41 @@
   pointer-events: none;
   object-fit: cover;
 }
+
+.ant-alert {
+  background-color: #181512;
+  box-shadow: 8px 8px 2px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  font-size: 1rem;
+
+}
+
+.ant-alert-message {
+  font-size: 2rem !important;
+}
+
+.ant-alert-icon {
+  display: flex;
+  align-self: center !important;
+  margin-right: 2% !important;
+  margin-left: 2%;
+  font-size: 3rem !important;
+}
+
+@media (max-width: 600px) {
+  .ant-alert-icon  {
+    font-size: 2rem !important;
+  }
+  .ant-alert-message {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 120px) {
+  .ant-alert-icon  {
+    font-size: 1rem !important;
+  }
+  .ant-alert-message {
+    font-size: 1rem !important;
+  }
+}

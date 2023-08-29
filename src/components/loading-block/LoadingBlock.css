@@ -1,0 +1,34 @@
+.loadingBlock {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    flex-direction: row;
+    align-self: center;
+
+}
+
+.spinner {
+    position: absolute;
+    left: 80%;
+    transform: scale(1.5);
+    align-self: center;
+    padding: 1%;
+}
+
+@media (max-width: 600px) {
+    .loadingBlock {
+        height: 80px;
+    }
+    .spinner {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 230px) {
+    .loadingBlock {
+        height: 80px;
+    }
+    .spinner {
+        display: none;
+    }
+}
