@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# FTG UI Webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Сайт для поиска бесплатных игр с использованием React/Redux, Typescript, Router v6 и ant-design.
 
-## Available Scripts
+## Запуск сайта
 
-In the project directory, you can run:
+Спустившись в директорию проекта стоит лишь написать:
 
+### `npm install`
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Сайт откроется по порту localhost:3001
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Скриншоты 
 
-### `npm test`
+1 - Основная страница со всеми играми
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/Pixerell/ftp-games-webapp/assets/90747184/1aa32828-073c-4862-bfdd-cd284350780e)
 
-### `npm run build`
+2 - Страница с определённой выбранной игрой
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://github.com/Pixerell/ftp-games-webapp/assets/90747184/9a727314-334c-47ee-933c-45518a60958f)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.5 - Скриншоты с игры
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://github.com/Pixerell/ftp-games-webapp/assets/90747184/2f59a704-885d-480e-a946-64ff632f0270)
 
-### `npm run eject`
+3 - Стадия подгрузки 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![image](https://github.com/Pixerell/ftp-games-webapp/assets/90747184/1bc630b7-8704-44de-94d8-4f4d4d95980f)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4 - Пример адаптивной вёрстки
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![image](https://github.com/Pixerell/ftp-games-webapp/assets/90747184/8483b0c8-d521-437c-bad5-4fdef48593fe)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Прочее
 
-## Learn More
+Оптимизация решена через бесконечный скроллинг используя встроенный Observable API. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Тесты были написаны с помощью Jest. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Кэширование и подгрузка игр реализованы с помощью Slice/Api от Redux.
+
+
+
